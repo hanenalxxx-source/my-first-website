@@ -1,37 +1,643 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>My First Page</title>
+
+    <title>Haneen</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #08090b;
+            font-family: Georgia, serif;
+            color: #dce5ea;
+        }
+
+
+        /* =========================
+           FULL SCREEN IMAGE
+        ========================= */
+
+        .scene {
+
+            width: 100%;
+            min-height: 100vh;
+
+            position: relative;
+
+            background-image: url("background.jpg");
+
+            background-size: cover;
+
+            background-position: center;
+
+            background-repeat: no-repeat;
+
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           DARK OVERLAY
+        ========================= */
+
+        .overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    rgba(0,0,0,0.08),
+                    rgba(0,0,0,0.18)
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+
+            position: relative;
+
+            z-index: 2;
+
+            width: 55%;
+
+            max-width: 700px;
+
+            margin: auto;
+
+            padding: 70px 20px 80px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
+        h1 {
+
+            margin: 0;
+
+            font-size: 65px;
+
+            font-weight: normal;
+
+            letter-spacing: 5px;
+
+            color: #edf4f7;
+
+            text-shadow:
+                0 2px 8px rgba(0,0,0,0.35);
+        }
+
+
+        .subtitle {
+
+            margin-top: 5px;
+
+            color: #aebec7;
+
+            font-style: italic;
+
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           DIVIDERS
+        ========================= */
+
+        .divider {
+
+            margin: 25px auto;
+
+            color: #cbd8de;
+
+            font-size: 18px;
+
+            opacity: 0.85;
+        }
+
+
+        /* =========================
+           HEADINGS
+        ========================= */
+
+        h2 {
+
+            font-size: 27px;
+
+            font-weight: normal;
+
+            color: #d1dce1;
+
+            margin-top: 25px;
+
+            letter-spacing: 1px;
+        }
+
+
+        p {
+
+            font-size: 17px;
+
+            line-height: 1.7;
+
+            color: #b9c9d1;
+        }
+
+
+        /* =========================
+           ABOUT ME
+        ========================= */
+
+        .intro {
+
+            border-left: 2px solid #91a5af;
+
+            padding-left: 18px;
+
+            text-align: left;
+
+            font-style: italic;
+
+            background: rgba(10,14,16,0.20);
+
+            padding-top: 8px;
+
+            padding-bottom: 8px;
+        }
+
+
+        /* =========================
+           HOBBIES
+        ========================= */
+
+        ul {
+
+            list-style: none;
+
+            padding: 0;
+
+            line-height: 2;
+
+            color: #bacbd3;
+
+        }
+
+
+        li::before {
+
+            content: "♡";
+
+            margin-right: 10px;
+
+            color: #dce6ea;
+        }
+
+
+        /* =========================
+           LINK
+        ========================= */
+
+        a {
+
+            color: #cbd9df;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        a:hover {
+
+            color: white;
+        }
+
+
+        /* =========================
+           PHOTO
+        ========================= */
+
+        .photo-frame {
+
+            margin: 25px;
+        }
+
+
+        .photo-frame img {
+
+            width: 300px;
+
+            border: 1px solid #758994;
+
+            padding: 5px;
+
+            background: #101519;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.35);
+
+        }
+
+
+        /* =========================
+           IMAGE DESCRIPTION
+        ========================= */
+
+        details {
+
+            color: #91a4ae;
+
+            font-style: italic;
+
+        }
+
+
+        details p {
+
+            font-size: 15px;
+
+        }
+
+
+        /* =========================
+           BUTTONS
+        ========================= */
+
+        button {
+
+            font-family: Georgia, serif;
+
+            padding: 11px 25px;
+
+            margin: 6px;
+
+            border-radius: 20px;
+
+            border: 1px solid #788d98;
+
+            background: rgba(8,12,15,0.75);
+
+            color: #d0dce1;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+
+        button:hover {
+
+            background: rgba(70,85,95,0.7);
+
+            transform: translateY(-2px);
+
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        #message {
+
+            margin: 20px auto;
+
+            padding: 18px;
+
+            max-width: 550px;
+
+            border: 1px solid #566b76;
+
+            background: rgba(5,8,10,0.65);
+
+            color: #bfcdd3;
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =========================
+           INPUT
+        ========================= */
+
+        input {
+
+            width: 220px;
+
+            padding: 12px;
+
+            background: rgba(5,8,10,0.8);
+
+            border: 1px solid #6d818c;
+
+            color: white;
+
+            text-align: center;
+
+            font-family: Georgia, serif;
+
+        }
+
+
+        input:focus {
+
+            outline: none;
+
+            border-color: #c5d3d8;
+
+        }
+
+
+        /* =========================
+           STARS
+        ========================= */
+
+        .stars {
+
+            margin-top: 30px;
+
+            color: #d5e0e5;
+
+            letter-spacing: 10px;
+
+            opacity: 0.85;
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+
+            margin-top: 25px;
+
+            color: #81949e;
+
+            font-style: italic;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .content {
+
+                width: 90%;
+
+            }
+
+            h1 {
+
+                font-size: 48px;
+
+            }
+
+            .photo-frame img {
+
+                max-width: 100%;
+
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
-    <h1>Haneen</h1>
 
-    <p>
-        My name is Haneen. I am a student who enjoys learning new things and exploring technology.
-    </p>
+<div class="scene">
 
-    <h2>My Hobbies</h2>
+    <div class="overlay"></div>
 
-    <ul>
-        <li>Photography</li>
-        <li>Cooking</li>
-        <li>Listening to music</li>
-    </ul>
 
-    <a href="https://www.wikipedia.org">Visit Wikipedia</a>
+    <main class="content">
 
-    <br><br>
 
-    <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7"
-         alt="A beautiful nature landscape with mountains and blue sky"
-         width="300">
+        <div class="divider">
+            ✦ ✧ ✦ ✧ ✦
+        </div>
 
-    <details>
-        <summary>alt</summary>
-        A beautiful nature landscape with mountains and blue sky
-    </details>
+
+        <h1>Haneen</h1>
+
+
+        <div class="subtitle">
+            welcome to my little page
+        </div>
+
+
+        <div class="divider">
+            ───── ✦ ─────
+        </div>
+
+
+        <h2>About Me</h2>
+
+
+        <p class="intro">
+
+            My name is Haneen. I am a student who enjoys
+            learning new things and exploring technology.
+
+        </p>
+
+
+        <div class="divider">
+            ✧ ─── ✦ ─── ✧
+        </div>
+
+
+        <h2>My Hobbies</h2>
+
+
+        <ul>
+
+            <li>Photography</li>
+
+            <li>Cooking</li>
+
+            <li>Listening to music</li>
+
+        </ul>
+
+
+        <div class="divider">
+            ───── ✦ ─────
+        </div>
+
+
+        <p>
+
+            <a href="https://www.wikipedia.org">
+                ♡ Visit Wikipedia ♡
+            </a>
+
+        </p>
+
+
+        <!-- =========================
+             MOUNTAIN IMAGE
+        ========================= -->
+
+        <div class="photo-frame">
+
+            <img
+                src="https://png.pngtree.com/thumb_back/fw800/background/20231219/pngtree-snowy-night-mountains-photo-image_15526686.png"
+                alt="A beautiful snowy night mountain landscape"
+            >
+
+        </div>
+
+
+        <!-- =========================
+             IMAGE DESCRIPTION
+        ========================= -->
+
+        <details>
+
+            <summary>✦ Image Description ✦</summary>
+
+            <p>
+                A beautiful snowy mountain landscape at night,
+                with a dark sky and bright stars.
+            </p>
+
+        </details>
+
+
+        <div class="divider">
+            ───── ✧ ─────
+        </div>
+
+
+        <h2>♡ A Little Welcome ♡</h2>
+
+
+        <button onclick="showWelcome()">
+            ✦ Show Welcome Message ✦
+        </button>
+
+
+        <button onclick="changeColor()">
+            ❦ Change My Vibe ❦
+        </button>
+
+
+        <div id="message">
+
+            ✧ Something nice is waiting here... ✧
+
+        </div>
+
+
+        <div class="divider">
+            ✧ ───── ✧
+        </div>
+
+
+        <h2>Say Hello</h2>
+
+
+        <input
+            type="text"
+            id="name"
+            value="Haneen"
+        >
+
+
+        <br>
+
+
+        <button onclick="welcomeName()">
+            ♡ Welcome ♡
+        </button>
+
+
+        <div class="stars">
+            ✦ ✧ ★ ✧ ✦
+        </div>
+
+
+        <div class="footer">
+            Made with a little creativity & a lot of ♡
+        </div>
+
+
+    </main>
+
+</div>
+
+
+<script>
+
+
+    function showWelcome() {
+
+        document.getElementById("message").innerHTML =
+        "☕ Hey Haneen! ✦<br>" +
+        "Welcome to my little corner of the internet ♡<br>" +
+        "Stay a while... there's always something new to discover. ❦";
+
+    }
+
+
+    function changeColor() {
+
+        document.querySelector(".scene").style.filter =
+        "brightness(0.90)";
+
+        document.getElementById("message").innerHTML =
+        "❦ A little change never hurts... ✧<br>" +
+        "I think this vibe suits me! ♡";
+
+    }
+
+
+    function welcomeName() {
+
+        let name =
+        document.getElementById("name").value;
+
+        document.getElementById("message").innerHTML =
+        "♡ Hey " + name + "! ✦<br>" +
+        "Come in, make yourself comfortable, " +
+        "and enjoy my little page. ❦";
+
+    }
+
+
+</script>
+
 
 </body>
+
 </html>
