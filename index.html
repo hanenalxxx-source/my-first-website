@@ -1,434 +1,801 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
 
-    <title>Haneen</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
+<title>Haneen</title>
 
-        * {
-            box-sizing: border-box;
-        }
 
-        body {
-            margin: 0;
-            background: #08090b;
-            font-family: Georgia, serif;
-            color: #dce5ea;
-        }
+<style>
 
 
-        /* =========================
-           FULL SCREEN IMAGE
-        ========================= */
+:root{
 
-        .scene {
+--background:#05070d;
+--surface:rgba(14,18,30,.65);
 
-            width: 100%;
-            min-height: 100vh;
+--text:#f5f7ff;
+--secondary:#c4ccdb;
 
-            position: relative;
+--accent:#dbe8ff;
 
-            background-image: url("background.jpg");
+--border:rgba(220,230,255,.25);
 
-            background-size: cover;
+--glow:rgba(180,210,255,.4);
 
-            background-position: center;
+}
 
-            background-repeat: no-repeat;
 
-            overflow: hidden;
-        }
 
+body.purple{
 
-        /* =========================
-           DARK OVERLAY
-        ========================= */
+--background:#100717;
+--surface:rgba(35,18,48,.65);
 
-        .overlay {
+--accent:#ddb5ff;
+--secondary:#d7c4e8;
 
-            position: absolute;
+}
 
-            inset: 0;
 
-            background:
-                linear-gradient(
-                    rgba(0,0,0,0.08),
-                    rgba(0,0,0,0.18)
-                );
 
-            pointer-events: none;
-        }
+body.moon{
 
+--background:#11151c;
+--surface:rgba(45,48,55,.7);
 
-        /* =========================
-           CONTENT
-        ========================= */
+--accent:#eeeeee;
+--secondary:#d5d5d5;
 
-        .content {
+}
 
-            position: relative;
 
-            z-index: 2;
 
-            width: 55%;
+body.rose{
 
-            max-width: 700px;
+--background:#180b14;
+--surface:rgba(55,20,38,.65);
 
-            margin: auto;
+--accent:#ffc9df;
+--secondary:#e8c9d7;
 
-            padding: 70px 20px 80px;
+}
 
-            text-align: center;
-        }
 
 
-        /* =========================
-           TITLE
-        ========================= */
+body.gold{
 
-        h1 {
+--background:#100d05;
+--surface:rgba(50,35,10,.65);
 
-            margin: 0;
+--accent:#ffe7a6;
+--secondary:#e8d8ae;
 
-            font-size: 65px;
+}
 
-            font-weight: normal;
 
-            letter-spacing: 5px;
 
-            color: #edf4f7;
 
-            text-shadow:
-                0 2px 8px rgba(0,0,0,0.35);
-        }
 
+*{
 
-        .subtitle {
+box-sizing:border-box;
 
-            margin-top: 5px;
+}
 
-            color: #aebec7;
 
-            font-style: italic;
 
-            font-size: 17px;
-        }
+html{
 
+scroll-behavior:smooth;
 
-        /* =========================
-           DIVIDERS
-        ========================= */
+}
 
-        .divider {
 
-            margin: 25px auto;
 
-            color: #cbd8de;
+body{
 
-            font-size: 18px;
+margin:0;
 
-            opacity: 0.85;
-        }
+background:var(--background);
 
+color:var(--text);
 
-        /* =========================
-           HEADINGS
-        ========================= */
+font-family:Georgia,"Times New Roman",serif;
 
-        h2 {
+transition:.8s;
 
-            font-size: 27px;
+overflow-x:hidden;
 
-            font-weight: normal;
+}
 
-            color: #d1dce1;
 
-            margin-top: 25px;
 
-            letter-spacing: 1px;
-        }
 
+.scene{
 
-        p {
+min-height:100vh;
 
-            font-size: 17px;
+position:relative;
 
-            line-height: 1.7;
+overflow:hidden;
 
-            color: #b9c9d1;
-        }
 
+background:
 
-        /* =========================
-           ABOUT ME
-        ========================= */
+linear-gradient(
+rgba(3,5,12,.55),
+rgba(3,5,12,.8)
+),
 
-        .intro {
+url("background.jpg");
 
-            border-left: 2px solid #91a5af;
 
-            padding-left: 18px;
+background-size:cover;
 
-            text-align: left;
+background-position:center;
 
-            font-style: italic;
+background-attachment:fixed;
 
-            background: rgba(10,14,16,0.20);
+}
 
-            padding-top: 8px;
 
-            padding-bottom: 8px;
-        }
 
 
-        /* =========================
-           HOBBIES
-        ========================= */
+.scene::before{
 
-        ul {
 
-            list-style: none;
+content:"";
 
-            padding: 0;
+position:absolute;
 
-            line-height: 2;
+inset:25px;
 
-            color: #bacbd3;
 
-        }
+border:1px solid rgba(220,230,255,.35);
 
 
-        li::before {
+box-shadow:
 
-            content: "♡";
+0 0 40px rgba(180,200,255,.15),
 
-            margin-right: 10px;
+inset 0 0 40px rgba(180,200,255,.1);
 
-            color: #dce6ea;
-        }
 
+z-index:2;
 
-        /* =========================
-           LINK
-        ========================= */
+pointer-events:none;
 
-        a {
 
-            color: #cbd9df;
+}
 
-            text-decoration: none;
 
-            font-weight: bold;
-        }
 
 
-        a:hover {
 
-            color: white;
-        }
+.scene::after{
 
 
-        /* =========================
-           PHOTO
-        ========================= */
+content:"";
 
-        .photo-frame {
+position:absolute;
 
-            margin: 25px;
-        }
+inset:0;
 
 
-        .photo-frame img {
+background-image:
 
-            width: 300px;
+radial-gradient(circle,white 1px,transparent 1px);
 
-            border: 1px solid #758994;
 
-            padding: 5px;
+background-size:90px 90px;
 
-            background: #101519;
 
-            box-shadow:
-                0 8px 25px rgba(0,0,0,0.35);
+opacity:.18;
 
-        }
 
+animation:stars 20s linear infinite;
 
-        /* =========================
-           IMAGE DESCRIPTION
-        ========================= */
 
-        details {
+}
 
-            color: #91a4ae;
 
-            font-style: italic;
 
-        }
+@keyframes stars{
 
 
-        details p {
+from{
 
-            font-size: 15px;
+transform:translateY(0);
 
-        }
+}
 
 
-        /* =========================
-           BUTTONS
-        ========================= */
+to{
 
-        button {
+transform:translateY(-120px);
 
-            font-family: Georgia, serif;
+}
 
-            padding: 11px 25px;
 
-            margin: 6px;
+}
 
-            border-radius: 20px;
 
-            border: 1px solid #788d98;
 
-            background: rgba(8,12,15,0.75);
 
-            color: #d0dce1;
+.overlay{
 
-            cursor: pointer;
 
-            transition: 0.3s;
-        }
+position:fixed;
 
+inset:0;
 
-        button:hover {
 
-            background: rgba(70,85,95,0.7);
+background:
 
-            transform: translateY(-2px);
+radial-gradient(
 
-        }
+circle at center,
 
+transparent 20%,
 
-        /* =========================
-           MESSAGE
-        ========================= */
+rgba(0,0,0,.5)
 
-        #message {
+);
 
-            margin: 20px auto;
 
-            padding: 18px;
+z-index:1;
 
-            max-width: 550px;
+pointer-events:none;
 
-            border: 1px solid #566b76;
 
-            background: rgba(5,8,10,0.65);
+}
 
-            color: #bfcdd3;
 
-            line-height: 1.8;
 
-        }
 
 
-        /* =========================
-           INPUT
-        ========================= */
+.flower{
 
-        input {
 
-            width: 220px;
+position:absolute;
 
-            padding: 12px;
 
-            background: rgba(5,8,10,0.8);
+width:360px;
 
-            border: 1px solid #6d818c;
+height:360px;
 
-            color: white;
 
-            text-align: center;
+background:url("flower.png")
 
-            font-family: Georgia, serif;
+center/contain no-repeat;
 
-        }
 
+opacity:.8;
 
-        input:focus {
 
-            outline: none;
+filter:
 
-            border-color: #c5d3d8;
+drop-shadow(0 0 30px var(--glow));
 
-        }
 
+z-index:3;
 
-        /* =========================
-           STARS
-        ========================= */
 
-        .stars {
+}
 
-            margin-top: 30px;
 
-            color: #d5e0e5;
 
-            letter-spacing: 10px;
+.flower-left{
 
-            opacity: 0.85;
+left:-90px;
 
-        }
+bottom:-40px;
 
+}
 
-        /* =========================
-           FOOTER
-        ========================= */
 
-        .footer {
 
-            margin-top: 25px;
+.flower-right{
 
-            color: #81949e;
+right:-90px;
 
-            font-style: italic;
+top:-40px;
 
-            font-size: 14px;
+transform:rotate(20deg);
 
-        }
+}
 
 
-        /* =========================
-           MOBILE
-        ========================= */
 
-        @media (max-width: 800px) {
 
-            .content {
 
-                width: 90%;
+.content{
 
-            }
 
-            h1 {
+position:relative;
 
-                font-size: 48px;
+z-index:5;
 
-            }
 
-            .photo-frame img {
+width:min(720px,90%);
 
-                max-width: 100%;
 
-            }
+margin:auto;
 
-        }
 
-    </style>
+padding:90px 20px 70px;
+
+
+text-align:center;
+
+
+}
+
+
+
+
+.small-label{
+
+
+color:var(--accent);
+
+
+font-size:13px;
+
+
+letter-spacing:5px;
+
+
+text-transform:uppercase;
+
+
+}
+
+
+
+
+h1{
+
+
+margin:15px 0;
+
+
+font-size:clamp(50px,8vw,85px);
+
+
+font-weight:normal;
+
+
+letter-spacing:8px;
+
+
+text-shadow:
+
+0 0 30px var(--glow);
+
+
+}
+
+
+
+.subtitle{
+
+
+color:var(--secondary);
+
+
+font-style:italic;
+
+
+letter-spacing:2px;
+
+
+}
+
+
+
+.divider{
+
+
+margin:30px;
+
+
+color:var(--accent);
+
+
+}
+
+
+
+
+.section{
+
+
+margin:30px 0;
+
+
+padding:30px;
+
+
+background:var(--surface);
+
+
+border:1px solid var(--border);
+
+
+border-radius:22px;
+
+
+backdrop-filter:blur(15px);
+
+
+box-shadow:
+
+0 20px 50px rgba(0,0,0,.5);
+
+
+transition:.6s;
+
+
+}
+
+
+
+h2{
+
+
+font-weight:normal;
+
+
+letter-spacing:2px;
+
+
+}
+
+
+
+p,li{
+
+
+color:var(--secondary);
+
+
+line-height:1.8;
+
+
+}
+
+.intro{
+
+text-align:left;
+
+border-left:2px solid var(--accent);
+
+padding-left:18px;
+
+}
+
+
+
+ul{
+
+list-style:none;
+
+padding:0;
+
+}
+
+
+
+li{
+
+padding:10px;
+
+font-size:16px;
+
+}
+
+
+
+li::before{
+
+content:"✦";
+
+color:var(--accent);
+
+margin-right:10px;
+
+}
+
+
+
+a{
+
+color:var(--accent);
+
+text-decoration:none;
+
+transition:.3s;
+
+}
+
+
+
+a:hover{
+
+letter-spacing:2px;
+
+}
+
+
+
+.photo-frame{
+
+
+margin:25px auto;
+
+
+width:fit-content;
+
+
+padding:10px;
+
+
+border:1px solid var(--border);
+
+
+background:rgba(0,0,0,.25);
+
+
+box-shadow:0 15px 35px rgba(0,0,0,.5);
+
+
+}
+
+
+
+.photo-frame img{
+
+
+display:block;
+
+
+width:min(320px,80vw);
+
+
+}
+
+
+
+details{
+
+
+color:var(--secondary);
+
+
+font-style:italic;
+
+
+}
+
+
+
+.buttons{
+
+
+display:flex;
+
+
+justify-content:center;
+
+
+flex-wrap:wrap;
+
+
+gap:12px;
+
+
+}
+
+
+
+button{
+
+
+font-family:Georgia,serif;
+
+
+padding:13px 25px;
+
+
+border-radius:30px;
+
+
+border:1px solid var(--border);
+
+
+background:rgba(0,0,0,.3);
+
+
+color:var(--text);
+
+
+cursor:pointer;
+
+
+transition:.4s;
+
+
+}
+
+
+
+button:hover{
+
+
+background:var(--accent);
+
+
+color:#111;
+
+
+transform:translateY(-4px);
+
+
+}
+
+
+
+#message{
+
+
+margin:25px auto;
+
+
+padding:18px;
+
+
+max-width:550px;
+
+
+background:rgba(0,0,0,.2);
+
+
+border-left:2px solid var(--accent);
+
+
+border-radius:10px;
+
+
+color:var(--secondary);
+
+
+}
+
+
+
+input{
+
+
+width:min(240px,80%);
+
+
+padding:13px;
+
+
+border-radius:30px;
+
+
+border:1px solid var(--border);
+
+
+background:rgba(0,0,0,.3);
+
+
+color:white;
+
+
+text-align:center;
+
+
+outline:none;
+
+
+}
+
+
+
+.stars{
+
+
+margin-top:35px;
+
+
+color:var(--accent);
+
+
+letter-spacing:10px;
+
+
+}
+
+
+
+.footer{
+
+
+margin-top:15px;
+
+
+color:var(--secondary);
+
+
+font-size:13px;
+
+
+font-style:italic;
+
+
+}
+
+
+
+
+
+@media(max-width:700px){
+
+
+.scene::before{
+
+inset:12px;
+
+}
+
+
+.content{
+
+width:92%;
+
+padding-top:70px;
+
+}
+
+
+.section{
+
+padding:22px 18px;
+
+}
+
+
+.flower{
+
+width:220px;
+
+height:220px;
+
+}
+
+
+h1{
+
+letter-spacing:5px;
+
+}
+
+
+}
+
+
+
+</style>
 
 </head>
+
 
 
 <body>
@@ -436,208 +803,484 @@
 
 <div class="scene">
 
-    <div class="overlay"></div>
 
+<div class="overlay"></div>
 
-    <main class="content">
 
+<div class="flower flower-left"></div>
 
-        <div class="divider">
-            ✦ ✧ ✦ ✧ ✦
-        </div>
+<div class="flower flower-right"></div>
 
 
-        <h1>Haneen</h1>
 
 
-        <div class="subtitle">
-            welcome to my little page
-        </div>
+<main class="content">
 
 
-        <div class="divider">
-            ───── ✦ ─────
-        </div>
 
+<div class="small-label">
 
-        <h2>About Me</h2>
-
-
-        <p class="intro">
-
-            My name is Haneen. I am a student who enjoys
-            learning new things and exploring technology.
-
-        </p>
-
-
-        <div class="divider">
-            ✧ ─── ✦ ─── ✧
-        </div>
-
-
-        <h2>My Hobbies</h2>
-
-
-        <ul>
-
-            <li>Photography</li>
-
-            <li>Cooking</li>
-
-            <li>Listening to music</li>
-
-        </ul>
-
-
-        <div class="divider">
-            ───── ✦ ─────
-        </div>
-
-
-        <p>
-
-            <a href="https://www.wikipedia.org">
-                ♡ Visit Wikipedia ♡
-            </a>
-
-        </p>
-
-
-        <!-- =========================
-             MOUNTAIN IMAGE
-        ========================= -->
-
-        <div class="photo-frame">
-
-            <img
-                src="https://png.pngtree.com/thumb_back/fw800/background/20231219/pngtree-snowy-night-mountains-photo-image_15526686.png"
-                alt="A beautiful snowy night mountain landscape"
-            >
-
-        </div>
-
-
-        <!-- =========================
-             IMAGE DESCRIPTION
-        ========================= -->
-
-        <details>
-
-            <summary>✦ Image Description ✦</summary>
-
-            <p>
-                A beautiful snowy mountain landscape at night,
-                with a dark sky and bright stars.
-            </p>
-
-        </details>
-
-
-        <div class="divider">
-            ───── ✧ ─────
-        </div>
-
-
-        <h2>♡ A Little Welcome ♡</h2>
-
-
-        <button onclick="showWelcome()">
-            ✦ Show Welcome Message ✦
-        </button>
-
-
-        <button onclick="changeColor()">
-            ❦ Change My Vibe ❦
-        </button>
-
-
-        <div id="message">
-
-            ✧ Something nice is waiting here... ✧
-
-        </div>
-
-
-        <div class="divider">
-            ✧ ───── ✧
-        </div>
-
-
-        <h2>Say Hello</h2>
-
-
-        <input
-            type="text"
-            id="name"
-            value="Haneen"
-        >
-
-
-        <br>
-
-
-        <button onclick="welcomeName()">
-            ♡ Welcome ♡
-        </button>
-
-
-        <div class="stars">
-            ✦ ✧ ★ ✧ ✦
-        </div>
-
-
-        <div class="footer">
-            Made with a little creativity & a lot of ♡
-        </div>
-
-
-    </main>
+Personal Website
 
 </div>
+
+
+
+<h1>
+
+Haneen
+
+</h1>
+
+
+
+<div class="subtitle">
+
+welcome to my little page
+
+</div>
+
+
+
+<div class="divider">
+
+───── ✦ ─────
+
+</div>
+
+
+
+
+<section class="section">
+
+
+<h2>
+
+About Me
+
+</h2>
+
+
+<p class="intro">
+
+My name is Haneen. I am a student who enjoys
+learning new things and exploring technology.
+
+</p>
+
+
+</section>
+
+
+
+
+
+<section class="section">
+
+
+<h2>
+
+My Hobbies
+
+</h2>
+
+
+
+<ul>
+
+
+<li>
+
+Photography
+
+</li>
+
+
+<li>
+
+Cooking
+
+</li>
+
+
+<li>
+
+Listening to music
+
+</li>
+
+
+
+</ul>
+
+
+</section>
+
+
+
+
+
+<div class="divider">
+
+✧ ───── ✦ ───── ✧
+
+</div>
+
+
+
+
+<p>
+
+
+<a href="https://www.wikipedia.org"
+target="_blank">
+
+
+♡ Visit Wikipedia ♡
+
+
+</a>
+
+
+</p>
+
+
+
+
+
+<section class="section">
+
+
+<h2>
+
+Something I Like
+
+</h2>
+
+
+
+<div class="photo-frame">
+
+
+<img
+
+src="https://png.pngtree.com/thumb_back/fw800/background/20231219/pngtree-snowy-night-mountains-photo-image_15526686.png"
+
+
+alt="snow mountain">
+
+
+</div>
+
+
+
+
+<details>
+
+
+<summary>
+
+✦ Image Description ✦
+
+</summary>
+
+
+
+<p>
+
+A beautiful snowy mountain landscape at night,
+with a dark sky and bright stars.
+
+</p>
+
+
+
+</details>
+
+
+</section>
+
+
+
+
+
+<section class="section">
+
+
+<h2>
+
+A Little Welcome
+
+</h2>
+
+
+
+<div class="buttons">
+
+
+<button onclick="showWelcome()">
+
+✦ Show Welcome Message ✦
+
+</button>
+
+
+
+<button onclick="changeColor()">
+
+❦ Change My Vibe ❦
+
+</button>
+
+
+</div>
+
+
+
+<div id="message">
+
+✧ Something nice is waiting here... ✧
+
+</div>
+
+
+</section>
+
+
+<section class="section">
+
+
+<h2>
+
+Say Hello
+
+</h2>
+
+
+
+<input
+
+type="text"
+
+id="name"
+
+value="Haneen"
+
+placeholder="Enter your name">
+
+
+<br><br>
+
+
+
+<button onclick="welcomeName()">
+
+♡ Welcome ♡
+
+</button>
+
+
+</section>
+
+
+
+
+
+<div class="stars">
+
+✦ ✧ ★ ✧ ✦
+
+</div>
+
+
+
+<div class="footer">
+
+Made with a little creativity & a lot of ♡
+
+</div>
+
+
+
+</main>
+
+
+</div>
+
+
+
 
 
 <script>
 
 
-    function showWelcome() {
-
-        document.getElementById("message").innerHTML =
-        "☕ Hey Haneen! ✦<br>" +
-        "Welcome to my little corner of the internet ♡<br>" +
-        "Stay a while... there's always something new to discover. ❦";
-
-    }
+function showWelcome(){
 
 
-    function changeColor() {
-
-        document.querySelector(".scene").style.filter =
-        "brightness(0.90)";
-
-        document.getElementById("message").innerHTML =
-        "❦ A little change never hurts... ✧<br>" +
-        "I think this vibe suits me! ♡";
-
-    }
+document.getElementById("message").innerHTML =
 
 
-    function welcomeName() {
+"☕ Hey Haneen! ✦<br>" +
 
-        let name =
-        document.getElementById("name").value;
+"Welcome to my little corner of the internet ♡<br>" +
 
-        document.getElementById("message").innerHTML =
-        "♡ Hey " + name + "! ✦<br>" +
-        "Come in, make yourself comfortable, " +
-        "and enjoy my little page. ❦";
+"Stay a while... there's always something new to discover. ❦";
 
-    }
+
+}
+
+
+
+
+
+let theme = 0;
+
+
+
+function changeColor(){
+
+
+theme++;
+
+
+
+if(theme === 1){
+
+
+document.body.className="purple";
+
+
+document.getElementById("message").innerHTML =
+
+"✦ Purple Galaxy vibe... 💜";
+
+
+}
+
+
+
+
+else if(theme === 2){
+
+
+document.body.className="moon";
+
+
+document.getElementById("message").innerHTML =
+
+"☾ Moonlight atmosphere... ✧";
+
+
+}
+
+
+
+
+
+else if(theme === 3){
+
+
+document.body.className="rose";
+
+
+document.getElementById("message").innerHTML =
+
+"🌸 Soft rose fantasy...";
+
+
+}
+
+
+
+
+
+else if(theme === 4){
+
+
+document.body.className="gold";
+
+
+document.getElementById("message").innerHTML =
+
+"✨ Golden midnight mood...";
+
+
+}
+
+
+
+
+
+else{
+
+
+document.body.className="";
+
+
+theme = 0;
+
+
+document.getElementById("message").innerHTML =
+
+"❦ Back to midnight vibe... ♡";
+
+
+}
+
+
+}
+
+
+
+
+
+function welcomeName(){
+
+
+
+let name = document
+
+.getElementById("name")
+
+.value
+
+.trim();
+
+
+
+
+if(name === ""){
+
+
+name="Haneen";
+
+
+}
+
+
+
+
+
+document.getElementById("message").innerHTML =
+
+
+"♡ Hey " + name + "! ✦<br>" +
+
+"Come in, make yourself comfortable, " +
+
+"and enjoy my little page. ❦";
+
+
+
+}
+
 
 
 </script>
 
 
+
 </body>
+
 
 </html>
